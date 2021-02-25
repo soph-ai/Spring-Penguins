@@ -3,6 +3,8 @@ package com.qa.penguins.rest;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,13 +20,15 @@ public class PenguinController {
 	private List<Penguin> penguins = new ArrayList<>();
 
 	@PostMapping("/createPenguin")
-	public void createPenguin(@RequestBody Penguin penguin) {
+	public ResponseEntity<Penguin> createPenguin(@RequestBody Penguin penguin) {
 		this.penguins.add(penguin);
+		Penguin added = this.penguins.get(this.penguins.size() - 1);
+		return new ResponseEntity<Penguin>(added, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/getPenguins")
-	public List<Penguin> getPenguin() {
-		return this.penguins;
+	public ResponseEntity<List<Penguin>> getPenguin() {
+		return ResponseEntity.ok(this.penguins);
 	}
 
 	@GetMapping("/getPenguin/{id}")
