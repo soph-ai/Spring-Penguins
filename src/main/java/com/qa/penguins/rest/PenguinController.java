@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.penguins.domain.Penguin;
-import com.qa.penguins.service.PenguinService;
+import com.qa.penguins.service.penguin.PenguinService;
 
 @RestController
 public class PenguinController {
 
-	private PenguinService service;
+	private PenguinService service; // <- dependency
 
 	public PenguinController(PenguinService service) {
 		super();

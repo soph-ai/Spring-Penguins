@@ -1,4 +1,4 @@
-package com.qa.penguins.service;
+package com.qa.penguins.service.test;
 
 public class HappyResponseService implements ResponseService {
 
