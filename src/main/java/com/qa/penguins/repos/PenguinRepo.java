@@ -8,4 +8,6 @@ import com.qa.penguins.domain.Penguin;
 @Repository
 public interface PenguinRepo extends JpaRepository<Penguin, Long> {
 
+	Penguin findByName(String name);
+
 }

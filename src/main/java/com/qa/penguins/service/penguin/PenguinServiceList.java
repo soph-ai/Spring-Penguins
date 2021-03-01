@@ -2,11 +2,8 @@ package com.qa.penguins.service.penguin;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.qa.penguins.domain.Penguin;
 
-@Service
 public class PenguinServiceList implements PenguinService {
 
 	private List<Penguin> penguins;
@@ -29,12 +26,12 @@ public class PenguinServiceList implements PenguinService {
 	}
 
 	@Override
-	public Penguin getPenguinById(int id) {
+	public Penguin getPenguinById(Long id) {
 		return this.penguins.get(id);
 	}
 
 	@Override
-	public Penguin removePenguin(int id) {
+	public boolean removePenguin(Long id) {
 		return this.penguins.remove(id);
 	}
 

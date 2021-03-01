@@ -10,7 +10,11 @@ public interface PenguinService {
 
 	List<Penguin> getPenguin();
 
-	Penguin getPenguinById(int id);
+	Penguin getPenguinById(Long id);
 
-	Penguin removePenguin(int id);
+	boolean removePenguin(Long id);
+
+	Penguin updatePenguin(Long id, Penguin newPenguin);
+
+	Penguin getPenguinByName(String name);
 }

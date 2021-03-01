@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,13 +36,22 @@ public class PenguinController {
 	}
 
 	@GetMapping("/getPenguin/{id}")
-	public Penguin getPenguinById(@PathVariable int id) {
+	public Penguin getPenguinById(@PathVariable Long id) {
 		return this.service.getPenguinById(id);
 	}
 
+	@GetMapping("/getPenguinByName/{name}")
+	public Penguin getPenguinByName(@PathVariable String name) {
+		return this.service.getPenguinByName(name);
+	}
+
 	@DeleteMapping("/removePenguin/{id}")
-	public Penguin removePenguin(@PathVariable int id) {
+	public boolean removePenguin(@PathVariable Long id) {
 		return this.service.removePenguin(id);
 	}
 
+	@PutMapping("/updatePenguin/{id}")
+	public Penguin updatePenguin(@PathVariable Long id, @RequestBody Penguin newPenguin) {
+		return this.service.updatePenguin(id, newPenguin);
+	}
 }
