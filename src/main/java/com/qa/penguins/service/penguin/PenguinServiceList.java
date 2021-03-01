@@ -27,7 +27,7 @@ public class PenguinServiceList implements PenguinService {
 
 	@Override
 	public Penguin getPenguinById(Long id) {
-		return this.penguins.get(id);
+		return this.penguins.get(id.intValue());
 	}
 
 	@Override

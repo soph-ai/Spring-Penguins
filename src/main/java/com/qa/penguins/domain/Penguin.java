@@ -20,6 +20,15 @@ public class Penguin {
 
 	private int tuxedoSize;
 
+	public Penguin(Long id, String name, int age, int noOfChildren, int tuxedoSize) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.age = age;
+		this.noOfChildren = noOfChildren;
+		this.tuxedoSize = tuxedoSize;
+	}
+
 	public Penguin(String name, int age, int noOfChildren, int tuxedoSize) {
 		super();
 		this.name = name;
