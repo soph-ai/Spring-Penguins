@@ -1,6 +1,16 @@
 package com.qa.penguins.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity // marks as table
 public class Penguin {
+
+	@Id // marks as PK
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // AUTO INCREMENT
+	private Long id;
 
 	private String name;
 
@@ -20,6 +30,16 @@ public class Penguin {
 
 	public Penguin() {
 		super();
+		// REQUIRED
+	}
+
+	// REQUIRED
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {

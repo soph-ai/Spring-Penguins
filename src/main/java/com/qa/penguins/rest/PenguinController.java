@@ -17,7 +17,7 @@ import com.qa.penguins.service.penguin.PenguinService;
 @RestController
 public class PenguinController {
 
-	private PenguinService service; // <- dependency
+	private PenguinService service;
 
 	public PenguinController(PenguinService service) {
 		super();
