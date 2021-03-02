@@ -32,7 +32,26 @@ public class PenguinServiceList implements PenguinService {
 
 	@Override
 	public boolean removePenguin(Long id) {
-		return this.penguins.remove(id);
+		Penguin penguin = this.penguins.get(id.intValue());
+		this.penguins.remove(id.intValue());
+		return !this.penguins.contains(penguin);
+	}
+
+	@Override
+	public Penguin updatePenguin(Long id, Penguin newPenguin) {
+		this.removePenguin(id);
+		this.penguins.add(id.intValue(), newPenguin);
+		return this.penguins.get(id.intValue());
+	}
+
+	@Override
+	public Penguin getPenguinByName(String name) {
+		for (Penguin p : this.penguins) {
+			if (p.getName().equals(name)) {
+				return p;
+			}
+		}
+		return null;
 	}
 
 }
