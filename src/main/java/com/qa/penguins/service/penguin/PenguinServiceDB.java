@@ -19,8 +19,9 @@ public class PenguinServiceDB implements PenguinService {
 	}
 
 	@Override
-	public Penguin createPenguin(Penguin penguin) {
-		return this.repo.save(penguin);
+	public Penguin createPenguin(Penguin penguin) { // penguin with no id (not saved)
+		Penguin saved = this.repo.save(penguin);
+		return saved; // penguin with an id (has been saved)
 	}
 
 	@Override
@@ -53,14 +54,16 @@ public class PenguinServiceDB implements PenguinService {
 
 	@Override
 	public Penguin updatePenguin(Long id, Penguin newPenguin) {
-		Penguin existing = this.getPenguinById(id);
+		Optional<Penguin> optionalPenguin = this.repo.findById(id);
+		Penguin existing = optionalPenguin.get();
 
 		existing.setAge(newPenguin.getAge());
 		existing.setName(newPenguin.getName());
 		existing.setNoOfChildren(newPenguin.getNoOfChildren());
 		existing.setTuxedoSize(newPenguin.getTuxedoSize());
 
-		return this.repo.save(existing);
+		Penguin updated = this.repo.save(existing);
+		return updated;
 	}
 
 }
