@@ -48,7 +48,7 @@ public class PenguinServiceDB implements PenguinService {
 	@Override
 	public boolean removePenguin(Long id) {
 		this.repo.deleteById(id);
-		return this.repo.existsById(id);
+		return !this.repo.existsById(id);
 	}
 
 	@Override

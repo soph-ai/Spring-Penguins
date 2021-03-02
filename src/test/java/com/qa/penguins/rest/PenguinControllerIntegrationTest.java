@@ -1,7 +1,9 @@
 package com.qa.penguins.rest;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -76,6 +78,39 @@ public class PenguinControllerIntegrationTest {
 
 		ResultMatcher checkStatus = status().isOk();
 		ResultMatcher checkBody = content().json(testPenguinAsJSON);
+
+		this.mockMVC.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
+	}
+
+	@Test
+	void updateTest() throws Exception {
+		// create penguin
+		Penguin newPenguin = new Penguin("Pingu", 45, 0, 64);
+		// convert it to json string
+		String newPenguinAsJSON = this.mapper.writeValueAsString(newPenguin);
+		// build mock request
+		RequestBuilder mockRequest = put("/updatePenguin/1").contentType(MediaType.APPLICATION_JSON)
+				.content(newPenguinAsJSON);
+
+		// create "saved" penguin
+		Penguin savedPenguin = new Penguin(1L, "Pingu", 45, 0, 64);
+		// convert "saved" penguin to json
+		String savedPenguinAsJSON = this.mapper.writeValueAsString(savedPenguin);
+
+		// check status is 201 - CREATED
+		ResultMatcher matchStatus = status().isOk();
+		// check that response body is correct penguin
+		ResultMatcher matchBody = content().json(savedPenguinAsJSON);
+
+		this.mockMVC.perform(mockRequest).andExpect(matchStatus).andExpect(matchBody);
+	}
+
+	@Test
+	void deleteTest() throws Exception {
+		RequestBuilder mockRequest = delete("/removePenguin/1");
+
+		ResultMatcher checkStatus = status().isOk();
+		ResultMatcher checkBody = content().string("true");
 
 		this.mockMVC.perform(mockRequest).andExpect(checkStatus).andExpect(checkBody);
 	}
