@@ -59,5 +59,7 @@ public class PenguinServiceDBUnitTest {
 		// THEN
 		assertThat(this.service.updatePenguin(id, newPenguin)).isEqualTo(updatedPenguin);
 
+		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
+		Mockito.verify(this.repo, Mockito.times(1)).save(updatedPenguin);
 	}
 }
