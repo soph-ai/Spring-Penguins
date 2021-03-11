@@ -46,8 +46,9 @@ public class PenguinController {
 	}
 
 	@DeleteMapping("/removePenguin/{id}")
-	public boolean removePenguin(@PathVariable Long id) {
-		return this.service.removePenguin(id);
+	public ResponseEntity<Boolean> removePenguin(@PathVariable Long id) {
+		return this.service.removePenguin(id) ? ResponseEntity.ok(true)
+				: new ResponseEntity<Boolean>(false, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
 	@PutMapping("/updatePenguin/{id}")
