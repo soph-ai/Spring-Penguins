@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguins</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+</head>
+
+<body>
+    <h1>Penguins</h1>
+    <main class="container">
+        <div class="row">
+            <section class="col-2">
+                <form id="penguinForm">
+                    <label for="penguinName">Name</label>
+                    <input name="name" id="penguinName" class="form-control" autofocus>
+                    <label for="penguinAge" class="form-label">Age:</label>
+                    <input type="number" name="age" id="penguinAge" class="form-control" min="0">
+                    <label for="tuxedoSize" class="form-label">Tuxedo Size:</label>
+                    <input type="number" name="tuxedoSize" id="tuxedoSize" class="form-control mb-2" min="0">
+                    <button type="reset" class="btn btn-primary">Reset</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </section>
+            <section class="col-10">
+                <div id="output" class="m-2 card-group row row-cols-4 g-4">
+                </div>
+            </section>
+        </div>
+    </main>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/penguins.js"></script>
+</body>
+
+</html>
