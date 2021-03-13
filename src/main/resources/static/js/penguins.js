@@ -67,15 +67,6 @@
     });
     penguinFooter.appendChild(deletePenguinButton);
 
-    const updatePenguinButton = document.createElement("a");
-    updatePenguinButton.className = "card-link";
-    updatePenguinButton.innerText = "Update";
-    updatePenguinButton.addEventListener('click', () => {
-      currentPenguin = penguin;
-      myModal.show();
-    });
-    penguinFooter.appendChild(updatePenguinButton);
-
     return newColumn;
   }
 
