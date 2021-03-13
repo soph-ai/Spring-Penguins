@@ -23,13 +23,11 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) // loads the front end in [src/main/resources/static] and
-																// hosts it on a random port
+//loads the front end in [src/main/resources/static] and hosts it on a random port
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+// resets db between tests -> means that only ONE penguin rendered to page at start of test
 @Sql(scripts = { "classpath:penguin-schema.sql",
-		"classpath:penguin-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD) // resets db between tests
-																							// -> means that only ONE
-																							// penguin rendered to page
-																							// at start of test
+		"classpath:penguin-data.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles("test") // uses h2db
 public class SeleniumDemo {
 
@@ -68,8 +66,8 @@ public class SeleniumDemo {
 	void testCreate() {
 		this.driver.get("http://localhost:" + port);
 
-		final String name = "pingu"; // created a variable due to string being used in BOTH sendKeys() and
-										// assertEquals()
+		// created a variable due to string being used in BOTH sendKeys and assertEquals
+		final String name = "pingu";
 		final String age = "22";
 		final String tuxedoSize = "44";
 
